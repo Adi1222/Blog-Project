@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+		 {% if user.is_authenticated %}
+		     <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.description|linebreaksbr }}</p>
+        {% if post.img %}
+            <img src="{{post.img.url}}" alt="No Image">
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<form method="post" action="/logout/">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Log out" />
+</form>
+<form method="post" action="/home/other">
+    {% csrf_token %}
+ <div>
+    <input type="text" placeholder="Search username" name="uname" >
+    <button type="submit" name="sumit" value="search">Search</button>
+</div>
+</form>
+
+<div>
+{% for post in posts %}
+<div class="post">
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
